@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
     <title>Contact GYMZONE</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <header id="main-header">
     <div class="container header-content">
         <a href="index.html" class="logo">GYMZONE</a>
@@ -21,7 +23,7 @@
         </nav>
     </div>
 </header>
-<main>
+<main id="main-content">
     <section class="page-title">
         <div class="container">
             <h1>CONTACT GYMZONE</h1>
@@ -72,9 +74,9 @@
             <form id="contact-form" action="mailto:ernarface12@gmail.com" method="post" enctype="text/plain">
                 <h2>Send a Message</h2>
                 <label for="name">Name</label>
-                <input id="name" name="name" type="text" required>
+                <input id="name" name="name" type="text" autocomplete="name" required>
                 <label for="email">Email</label>
-                <input id="email" name="email" type="email" required>
+                <input id="email" name="email" type="email" autocomplete="email" required>
                 <label for="focus">Training focus</label>
                 <select id="focus" name="focus" required>
                     <option value="">Select a focus</option>

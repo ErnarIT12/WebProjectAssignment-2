@@ -1,0 +1,17 @@
+# Agent skills and local AI configuration
+.agents/
+skills-lock.json
+
+# Assignment notes and source documents
+PLAN.md
+*.pdf
+
+# Local editor and operating system files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local development artifacts
+node_modules/
+*.log

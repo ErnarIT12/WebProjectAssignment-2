@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&display=swap');
 :root {
     --accent: #d4ff3f;
+    color-scheme: dark;
 }
 * {
     box-sizing: border-box;
@@ -12,6 +13,7 @@ body {
     background: #111;
     color: #fff;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 h1, h2, h3, .logo, .btn, .nav-menu a, .workout-table th {
     font-family: "Bebas Neue", sans-serif;
@@ -26,12 +28,81 @@ a:hover {
 }
 img {
     width: 100%;
+    height: auto;
     display: block;
+}
+.skip-link {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 10;
+    padding: 8px 12px;
+    background: var(--accent);
+    color: #111;
+    transform: translateY(-160%);
+}
+.skip-link:focus {
+    transform: translateY(0);
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
 }
 .container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
+}
+.page-layout {
+    display: grid;
+    min-height: 100vh;
+    grid-template-columns: 220px minmax(0, 1fr);
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}
+.site-header {
+    grid-area: header;
+}
+.sidebar {
+    grid-area: sidebar;
+    padding: 34px 24px;
+    background: #181818;
+    border-right: 1px solid #333;
+}
+.sidebar-label {
+    color: var(--accent);
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
+}
+.sidebar h2 {
+    margin: 12px 0;
+    font-size: 28px;
+}
+.sidebar > p:not(.sidebar-label) {
+    color: #aaa;
+    font-size: 14px;
+}
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 28px;
+}
+.sidebar-nav a {
+    padding: 9px 0;
+    border-bottom: 1px solid #333;
+    color: #ccc;
+}
+.site-main {
+    grid-area: main;
+    min-width: 0;
 }
 #main-header {
     background: #181818;
@@ -55,7 +126,7 @@ img {
 
 .nav-menu a {
     font-size: 17px;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 .nav-menu a:hover {
@@ -99,7 +170,7 @@ img {
     padding: 12px 25px;
     border-radius: 5px;
     font-size: 18px;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn:hover {
@@ -117,18 +188,62 @@ img {
     margin-bottom: 40px;
     text-transform: uppercase;
 }
-.card-grid {
+.gallery-section {
+    background: #111;
+}
+.gallery {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+.gallery-item {
+    position: relative;
+    min-height: 210px;
+    overflow: hidden;
+    background: #1d1d1d;
+    border: 1px solid #333;
+    border-radius: 8px;
+}
+.gallery-item img {
+    height: 100%;
+    min-height: 210px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+.gallery-item figcaption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 12px;
+    background: rgba(0, 0, 0, 0.78);
+    color: #fff;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+.gallery-item:hover img {
+    transform: scale(1.06);
+}
+.gallery-item:hover figcaption {
+    transform: translateY(0);
+}
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
     gap: 25px;
 }
 
 .card {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
     background: #1d1d1d;
     border: 1px solid #333;
     border-radius: 10px;
     overflow: hidden;
-    transition: 0.3s;
+    transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
@@ -138,10 +253,15 @@ img {
 
 .card img {
     height: 220px;
-    object-fit: cover;
+    object-fit: cover; 
+    
+    
 }
 
 .card-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     padding: 20px;
 }
 
@@ -154,7 +274,21 @@ img {
     color: #aaa;
 }
 
+.card-button {
+    align-self: flex-start;
+    margin-top: auto;
+    padding: 8px 14px;
+    background: var(--accent);
+    color: #111;
+    border-radius: 5px;
+    font-family: "Bebas Neue", sans-serif;
+    letter-spacing: 1px;
+}
+
 .exercise-card {
+    flex: 1 1 30%;
+    display: flex;
+    flex-direction: column;
     background: #1d1d1d;
     border-radius: 10px;
     overflow: hidden;
@@ -172,6 +306,7 @@ img {
 }
 
 .exercise-content {
+    flex: 1;
     padding: 20px;
 }
 
@@ -315,7 +450,6 @@ img {
 #contact-form input:focus,
 #contact-form select:focus,
 #contact-form textarea:focus {
-    outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 2px rgba(212, 255, 63, 0.15);
 }
@@ -331,7 +465,7 @@ img {
     font-family: "Bebas Neue", sans-serif;
     font-size: 18px;
     letter-spacing: 1px;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #contact-form button:hover {
@@ -343,6 +477,9 @@ img {
     padding: 52px 0 32px;
     margin-top: 50px;
     border-top: 1px solid #2d2d2d;
+}
+.site-footer {
+    grid-area: footer;
 }
 
 .footer-content {
@@ -393,13 +530,13 @@ img {
     border: 1px solid #303030;
     border-radius: 6px;
     box-shadow: inset 3px 0 0 transparent;
-    transition: 0.3s;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .footer-links a::after {
     content: "->";
     color: #666;
-    transition: 0.3s;
+    transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
@@ -432,7 +569,7 @@ img {
     color: var(--accent);
     font-family: "Bebas Neue", sans-serif;
     letter-spacing: 1px;
-    transition: 0.3s;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .footer-contact:hover,
@@ -490,12 +627,44 @@ img {
     margin: 0;
     border: 3px solid var(--accent);
 }
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}
 @media (max-width: 800px) {
+    .page-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr auto;
+        grid-template-areas:
+            "header"
+            "sidebar"
+            "main"
+            "footer";
+    }
+    .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid #333;
+    }
+    .sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 18px;
+        margin-top: 18px;
+    }
+    .sidebar-nav a {
+        border-bottom: 0;
+    }
     .hero-content {
         grid-template-columns: 1fr;
     }
     .card-grid {
-        grid-template-columns: 1fr;
+        flex-direction: column;
     }
     .nav-menu {
         gap: 10px;
@@ -509,6 +678,9 @@ img {
     .team-grid,
     .footer-content {
         grid-template-columns: 1fr;
+    }
+    .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     .team-card {
         align-items: flex-start;
@@ -528,5 +700,10 @@ img {
     }
     .contact-title {
         text-align: center;
+    }
+}
+@media (max-width: 520px) {
+    .gallery {
+        grid-template-columns: 1fr;
     }
 }

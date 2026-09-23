@@ -3,11 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111111">
     <title>GYMZONE - Home</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<header id="main-header">
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="page-layout">
+<header id="main-header" class="site-header">
     <div class="container header-content">
         <a href="index.html" class="logo">GYMZONE</a>
         <nav>
@@ -21,7 +24,17 @@
         </nav>
     </div>
 </header>
-<main>
+<aside class="sidebar">
+    <p class="sidebar-label">TRAINING FOCUS</p>
+    <h2>Build a balanced routine.</h2>
+    <p>Use the exercise pages to combine strength, technique and conditioning.</p>
+    <nav class="sidebar-nav" aria-label="Training focus">
+        <a href="upper.html">Upper body</a>
+        <a href="lower.html">Lower body</a>
+        <a href="crossfit.html">Conditioning</a>
+    </nav>
+</aside>
+<main class="site-main" id="main-content">
     <section class="hero">
         <div class="container hero-content">
             <div>
@@ -52,6 +65,7 @@
                             Train your chest, back,
                             shoulders and arms.
                         </p>
+                        <span class="card-button">View exercises</span>
                     </div>
                 </a>
                 <a href="lower.html" class="card">
@@ -63,6 +77,7 @@
                             Build strong legs,
                             quadriceps and glutes.
                         </p>
+                        <span class="card-button">View exercises</span>
                     </div>
                 </a>
                 <a href="crossfit.html" class="card">
@@ -74,6 +89,7 @@
                             High intensity exercises
                             for strength and endurance.
                         </p>
+                        <span class="card-button">View exercises</span>
                     </div>
                 </a>
             </div>
@@ -81,8 +97,8 @@
     </section>
     <section class="section motivation">
         <div class="container">
-            <img src="images/arnold1.jpg"
-                 alt="Motivational gym image">
+              <img src="images/arnold1.jpg"
+                  alt="Motivational gym image" loading="lazy">
             <h2>
                 “The resistance that you fight physically in the gym and the resistance that you fight in life can only build a strong character.”
             </h2>
@@ -100,7 +116,7 @@
             </p>
             <div class="team-grid">
                 <article class="team-card">
-                    <img class="profile-img" src="images/Yernar.jpg" alt="Portrait of Umirgaliyev Yernar">
+                    <img class="profile-img" src="images/Yernar.jpg" alt="Portrait of Umirgaliyev Yernar" loading="lazy">
                     <div>
                         <h3>Umirgaliyev Yernar</h3>
                         <p class="team-role">Software Engineer</p>
@@ -109,7 +125,7 @@
                     </div>
                 </article>
                 <article class="team-card">
-                    <img class="profile-img" src="images/Kazybek.jpg" alt="Portrait of Kazybek Karabala">
+                    <img class="profile-img" src="images/Kazybek.jpg" alt="Portrait of Kazybek Karabala" loading="lazy">
                     <div>
                         <h3>Kazybek Karabala</h3>
                         <p class="team-role">Software Engineer</p>
@@ -120,8 +136,51 @@
             </div>
         </div>
     </section>
+    <section class="section gallery-section" id="gallery">
+        <div class="container">
+            <h2 class="section-title">MOVEMENT GALLERY</h2>
+            <div class="gallery">
+                <figure class="gallery-item">
+                    <img src="images/Barbell-Bench-Press.gif" alt="Barbell bench press" loading="lazy">
+                    <figcaption>Bench Press</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Pull-up.gif" alt="Pull-up exercise" loading="lazy">
+                    <figcaption>Pull-Ups</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Overhead Press.gif" alt="Overhead press" loading="lazy">
+                    <figcaption>Overhead Press</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Barbell Squat.gif" alt="Barbell squat" loading="lazy">
+                    <figcaption>Barbell Squat</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Leg Press.gif" alt="Leg press" loading="lazy">
+                    <figcaption>Leg Press</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Romanian Deadlift.gif" alt="Romanian deadlift" loading="lazy">
+                    <figcaption>Romanian Deadlift</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Burpees.gif" alt="Burpees exercise" loading="lazy">
+                    <figcaption>Burpees</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Kettlebell Swing.gif" alt="Kettlebell swing" loading="lazy">
+                    <figcaption>Kettlebell Swing</figcaption>
+                </figure>
+                <figure class="gallery-item">
+                    <img src="images/Triceps Pushdown.gif" alt="Triceps pushdown" loading="lazy">
+                    <figcaption>Triceps Pushdown</figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
 </main>
-<footer id="main-footer">
+<footer id="main-footer" class="site-footer">
     <div class="container footer-content">
         <div class="footer-brand">
             <a href="index.html" class="logo">GYMZONE</a>
@@ -140,5 +199,6 @@
         </div>
     </div>
 </footer>
+</div>
 </body>
 </html>
